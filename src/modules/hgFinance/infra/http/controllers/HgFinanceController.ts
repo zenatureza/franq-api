@@ -1,22 +1,13 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { classToClass } from 'class-transformer';
-
-// import CreateUserService from '@modules/users/services/CreateUserService';
+import GetFinanceService from '@modules/hgFinance/services/GetFinanceService';
 
 export default class HgFinanceController {
-  public async create(request: Request, response: Response): Promise<Response> {
-    // const { name, email, password } = request.body;
+  public async index(request: Request, response: Response): Promise<Response> {
+    const getFinanceService = container.resolve(GetFinanceService);
 
-    // const createUserService = container.resolve(CreateUserService);
+    const data = await getFinanceService.execute();
 
-    // const user = await createUserService.execute({
-    //   name,
-    //   email,
-    //   password,
-    // });
-
-    // return response.json(classToClass(user));
-    return response.json();
+    return response.json(data);
   }
 }

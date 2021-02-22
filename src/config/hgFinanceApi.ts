@@ -1,3 +1,3 @@
 export default {
-  baseURL: 'https://api.hgbrasil.com/finance',
+  baseURL: process.env.HGFINANCE_BASE_URL || 'https://api.hgbrasil.com/finance',
 };

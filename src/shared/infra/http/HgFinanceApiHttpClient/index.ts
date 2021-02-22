@@ -6,12 +6,16 @@ import IHgFinanceApi from './IHgFinanceApi';
 @injectable()
 export default class HgFinanceApiHttpClient implements IHgFinanceApi {
   constructor(
-    @inject('hgFinanceApiHttpClient')
+    @inject('HgFinanceApiHttpClient')
     private readonly httpClient: AxiosInstance,
   ) {}
 
   public async getData(): Promise<AxiosResponse<HgFinanceApiResponse>> {
-    const response = await this.httpClient.get('/');
+    const response = await this.httpClient.get('/', {
+      params: {
+        key: process.env.HGFINANCE_KEY,
+      },
+    });
 
     return response;
   }

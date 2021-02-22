@@ -10,14 +10,20 @@ import ILogProvider from '@shared/infra/providers/LogProvider/interfaces/ILogPro
 import HttpLogger from '@shared/infra/http/middlewares/httpLogger';
 
 import hgFinanceApiConfig from '@config/hgFinanceApi';
+import HgFinanceApiHttpClient from '@shared/infra/http/HgFinanceApiHttpClient';
 
 container.registerSingleton<IHashProvider>('HashProvider', BCryptHashProvider);
 container.registerSingleton<ILogProvider>('LogProvider', WinstonLogProvider);
 
 container.registerSingleton<HttpLogger>('HttpLogger', HttpLogger);
 
+container.registerSingleton<HgFinanceApiHttpClient>(
+  'HgFinanceApi',
+  HgFinanceApiHttpClient,
+);
+
 container.registerInstance<AxiosInstance>(
-  'hgFinanceApiHttpClient',
+  'HgFinanceApiHttpClient',
   axios.create({
     baseURL: hgFinanceApiConfig.baseURL,
   }),

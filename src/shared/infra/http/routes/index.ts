@@ -2,11 +2,13 @@ import { Router, Request, Response } from 'express';
 
 import usersRouter from '@modules/users/infra/http/routes/users.routes';
 import sessionsRouter from '@modules/users/infra/http/routes/sessions.routes';
+import hgfinanceRouter from '@modules/hgFinance/infra/http/routes/hgfinance.routes';
 
 const routes = Router();
 
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
+routes.use('/hgfinance', hgfinanceRouter);
 
 routes.get(
   '/',
