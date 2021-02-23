@@ -36,6 +36,7 @@ app.use(
     }
 
     httpLogger.getLogger().error(err.message);
+    console.error(err);
 
     return response
       .status(500)
