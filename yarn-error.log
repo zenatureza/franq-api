@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/tsyringe -D
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/yahoo-stock-prices -D
 
 PATH: 
-  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Pichau\Documents\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Pichau\Documents\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python39\Scripts;C:\Python39;C:\Python27;C:\Python27\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\PuTTY;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_231\bin;C:\Android\Sdk\platform-tools;C:\Android\Sdk\tools;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files\dotnet;C:\Go\bin;D:\Programas\PostgreSQL\12\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin;C:\Program Files\Memurai;C:\Program Files\nodejs;C:\Program Files (x86)\dotnet;C:\Program Files (x86)\Yarn\bin;C:\Users\Pichau\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\Pichau\AppData\Local\Programs\Python\Python38;C:\Users\Pichau\AppData\Local\Microsoft\WindowsApps;C:\Users\Pichau\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Pichau\AppData\Local\GitHubDesktop\bin;C:\Users\Pichau\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\DataGrip 2019.2.6\bin;C:\Users\Pichau\go\bin;C:\Users\Pichau\.dotnet\tools;C:\Users\Pichau\.dotnet\tools;C:\Users\Pichau\AppData\Roaming\npm;C:\Users\Pichau\AppData\Local\Yarn\bin
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Pichau\Documents\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Pichau\Documents\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python39\Scripts;C:\Python39;C:\Python27;C:\Python27\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\PuTTY;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_231\bin;C:\Android\Sdk\platform-tools;C:\Android\Sdk\tools;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files\dotnet;C:\Go\bin;D:\Programas\PostgreSQL\12\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin;C:\Program Files\Memurai;C:\Program Files\nodejs;C:\Program Files (x86)\dotnet;C:\Program Files (x86)\Yarn\bin;C:\Users\Pichau\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\Pichau\AppData\Local\Programs\Python\Python38;C:\Users\Pichau\AppData\Local\Microsoft\WindowsApps;C:\Users\Pichau\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Pichau\AppData\Local\GitHubDesktop\bin;C:\Users\Pichau\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\DataGrip 2019.2.6\bin;C:\Users\Pichau\go\bin;C:\Users\Pichau\.dotnet\tools;C:\Users\Pichau\.dotnet\tools;C:\Users\Pichau\AppData\Roaming\npm;C:\Users\Pichau\AppData\Local\Yarn\bin;C:\Program Files\heroku\bin
 
 Yarn version: 
   1.22.5
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2ftsyringe: Not found
+  Error: https://registry.yarnpkg.com/@types%2fyahoo-stock-prices: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66097:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140749:22)
       at Request.emit (events.js:315:20)
@@ -28,7 +28,7 @@ Trace:
 
 npm manifest: 
   {
-    "name": "backend",
+    "name": "franq-api",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
@@ -40,9 +40,11 @@ npm manifest:
       "build": "cp ormconfig.example.production.json ormconfig.json && babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
     },
     "dependencies": {
+      "axios": "^0.21.1",
       "bcryptjs": "^2.4.3",
       "celebrate": "^13.0.4",
       "class-transformer": "^0.4.0",
+      "cors": "^2.8.5",
       "dotenv": "^8.2.0",
       "express": "^4.17.1",
       "express-async-errors": "^3.1.1",
@@ -52,27 +54,10 @@ npm manifest:
       "tsyringe": "^4.4.0",
       "typeorm": "^0.2.31",
       "uuidv4": "^6.2.6",
-      "winston": "^3.3.3"
+      "winston": "^3.3.3",
+      "yahoo-stock-prices": "^1.1.0"
     },
     "devDependencies": {
-      "ts-node": "^9.1.1",
-      "@types/express": "^4.17.11",
-      "@types/node": "^14.14.31",
-      "@types/bcryptjs": "^2.4.2",
-      "@types/jsonwebtoken": "^8.5.0",
-      "@types/morgan": "^1.9.2",
-      "@types/winston": "^2.4.4",
-      "@typescript-eslint/eslint-plugin": "^4.15.1",
-      "@typescript-eslint/parser": "^4.15.1",
-      "eslint": "^7.20.0",
-      "eslint-config-airbnb-base": "^14.2.1",
-      "eslint-config-prettier": "^7.2.0",
-      "eslint-plugin-import": "^2.22.1",
-      "jest": "^26.6.3",
-      "ts-jest": "^26.5.1",
-      "ts-node-dev": "^1.1.1",
-      "tsconfig-paths": "^3.9.0",
-      "typescript": "^4.1.5",
       "@babel/cli": "^7.12.13",
       "@babel/core": "^7.12.13",
       "@babel/node": "^7.12.13",
@@ -80,8 +65,28 @@ npm manifest:
       "@babel/plugin-proposal-decorators": "^7.12.13",
       "@babel/preset-env": "^7.12.13",
       "@babel/preset-typescript": "^7.12.13",
+      "@types/axios": "^0.14.0",
+      "@types/bcryptjs": "^2.4.2",
+      "@types/cors": "^2.8.10",
+      "@types/express": "^4.17.11",
+      "@types/jsonwebtoken": "^8.5.0",
+      "@types/morgan": "^1.9.2",
+      "@types/node": "^14.14.31",
+      "@types/winston": "^2.4.4",
+      "@typescript-eslint/eslint-plugin": "^4.15.1",
+      "@typescript-eslint/parser": "^4.15.1",
       "babel-plugin-module-resolver": "^4.1.0",
-      "babel-plugin-transform-typescript-metadata": "^0.3.1"
+      "babel-plugin-transform-typescript-metadata": "^0.3.1",
+      "eslint": "^7.20.0",
+      "eslint-config-airbnb-base": "^14.2.1",
+      "eslint-config-prettier": "^7.2.0",
+      "eslint-plugin-import": "^2.22.1",
+      "jest": "^26.6.3",
+      "ts-jest": "^26.5.1",
+      "ts-node": "^9.1.1",
+      "ts-node-dev": "^1.1.1",
+      "tsconfig-paths": "^3.9.0",
+      "typescript": "^4.1.5"
     }
   }
 
@@ -1309,6 +1314,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@sqltools/formatter/-/formatter-1.2.2.tgz#9390a8127c0dcba61ebd7fdcc748655e191bdd68"
     integrity sha512-/5O7Fq6Vnv8L6ucmPjaWbVG1XkP4FO+w5glqfkIsq3Xw4oyNAdJddbnYodNDAfjVUvo/rrSCTom4kAND7T1o5Q==
   
+  "@types/axios@^0.14.0":
+    version "0.14.0"
+    resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+    integrity sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=
+    dependencies:
+      axios "*"
+  
   "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
     version "7.1.12"
     resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.12.tgz#4d8e9e51eb265552a7e4f1ff2219ab6133bdfb2d"
@@ -1361,6 +1373,11 @@ Lockfile:
     integrity sha512-ePPA/JuI+X0vb+gSWlPKOY0NdNAie/rPUqX2GUPpbZwiKTkSPhjXWuee47E4MtE54QVzGCQMQkAL6JhV2E1+cQ==
     dependencies:
       "@types/node" "*"
+  
+  "@types/cors@^2.8.10":
+    version "2.8.10"
+    resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.10.tgz#61cc8469849e5bcdd0c7044122265c39cec10cf4"
+    integrity sha512-C7srjHiVG3Ey1nR6d511dtDkCEjxuN9W1HWAEjGq8kpcwmNM6JJkpC0xvabM7BXTG2wDq8Eu33iH9aQKa7IvLQ==
   
   "@types/express-serve-static-core@^4.17.18":
     version "4.17.18"
@@ -1850,6 +1867,13 @@ Lockfile:
     version "1.11.0"
     resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
     integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
+  
+  axios@*, axios@^0.21.1:
+    version "0.21.1"
+    resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+    integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+    dependencies:
+      follow-redirects "^1.10.0"
   
   babel-jest@^26.6.3:
     version "26.6.3"
@@ -2455,6 +2479,14 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
     integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
+  
+  cors@^2.8.5:
+    version "2.8.5"
+    resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
+    integrity sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
+    dependencies:
+      object-assign "^4"
+      vary "^1"
   
   create-require@^1.1.0:
     version "1.1.1"
@@ -3292,6 +3324,11 @@ Lockfile:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
     integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
+  
+  follow-redirects@^1.10.0:
+    version "1.13.2"
+    resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.2.tgz#dd73c8effc12728ba5cf4259d760ea5fb83e3147"
+    integrity sha512-6mPTgLxYm3r6Bkkg0vNM0HTjfGrOEtsfbhagQvbxDEsEkpNhw582upBaoRZylzen6krEmxXJgt9Ju6HiI4O7BA==
   
   for-in@^1.0.2:
     version "1.0.2"
@@ -5189,7 +5226,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
     integrity sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ==
   
-  object-assign@^4.0.1, object-assign@^4.1.0:
+  object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
     integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
@@ -5909,7 +5946,7 @@ Lockfile:
       stealthy-require "^1.1.1"
       tough-cookie "^2.3.3"
   
-  request@^2.87.0, request@^2.88.2:
+  request@^2.81.0, request@^2.87.0, request@^2.88.2:
     version "2.88.2"
     resolved "https://registry.yarnpkg.com/request/-/request-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
     integrity sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==
@@ -7004,7 +7041,7 @@ Lockfile:
       spdx-correct "^3.0.0"
       spdx-expression-parse "^3.0.0"
   
-  vary@~1.1.2:
+  vary@^1, vary@~1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
     integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
@@ -7199,6 +7236,13 @@ Lockfile:
     version "5.0.5"
     resolved "https://registry.yarnpkg.com/y18n/-/y18n-5.0.5.tgz#8769ec08d03b1ea2df2500acef561743bbb9ab18"
     integrity sha512-hsRUr4FFrvhhRH12wOdfs38Gy7k2FFzB9qgN9v3aLykRq0dRcdcpz5C9FxdS2NuhOrI/628b/KSTJ3rwHysYSg==
+  
+  yahoo-stock-prices@^1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/yahoo-stock-prices/-/yahoo-stock-prices-1.1.0.tgz#399aa4acce68aaa0f1d57e4bb2bd695c7031f245"
+    integrity sha512-A+s0/kTchqwixk9mE+o+8hqRW6zxFeGGb2WcS6j06ET76xxokQo9E0LGZ9v9prom8Ya4vdYkYrtUiMD4dFH0Fg==
+    dependencies:
+      request "^2.81.0"
   
   yallist@^3.0.0, yallist@^3.0.3:
     version "3.1.1"

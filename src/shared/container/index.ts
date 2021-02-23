@@ -11,8 +11,21 @@ import HttpLogger from '@shared/infra/http/middlewares/httpLogger';
 
 import hgFinanceApiConfig from '@config/hgFinanceApi';
 import HgFinanceApiHttpClient from '@shared/infra/http/HgFinanceApiHttpClient';
+import IStockPricesProvider from '@shared/infra/providers/StockPricesProvider/interfaces/IStockProvider';
+import YahooStockPricesProvider from '@shared/infra/providers/StockPricesProvider/implementations/YahooStockPricesProvider';
+import awesomeApi from '@config/awesomeApi';
+import ICurrencyPricesProvider from '@shared/infra/providers/CurrencyPricesProvider/interfaces/ICurrencyPricesProvider';
+import AwesomeApiCurrencyPricesProvider from '@shared/infra/providers/CurrencyPricesProvider/implementations/AwesomeApiCurrencyPricesProvider';
 
 container.registerSingleton<IHashProvider>('HashProvider', BCryptHashProvider);
+container.registerSingleton<IStockPricesProvider>(
+  'StockPricesProvider',
+  YahooStockPricesProvider,
+);
+container.registerSingleton<ICurrencyPricesProvider>(
+  'CurrencyPricesProvider',
+  AwesomeApiCurrencyPricesProvider,
+);
 container.registerSingleton<ILogProvider>('LogProvider', WinstonLogProvider);
 
 container.registerSingleton<HttpLogger>('HttpLogger', HttpLogger);
@@ -26,6 +39,13 @@ container.registerInstance<AxiosInstance>(
   'HgFinanceApiHttpClient',
   axios.create({
     baseURL: hgFinanceApiConfig.baseURL,
+  }),
+);
+
+container.registerInstance<AxiosInstance>(
+  'AwesomeApiHttpClient',
+  axios.create({
+    baseURL: awesomeApi.baseURL,
   }),
 );
 
